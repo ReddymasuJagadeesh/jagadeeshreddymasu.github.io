@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio - Jagadeesh Reddymasu</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            background-color: #121212;
+            color: white;
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
+        .navbar {
+            background-color: #1e1e1e;
+            padding: 15px;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        .navbar-brand {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #ffa500 !important;
+        }
+        .hero-section {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            min-height: 100vh;
+            padding: 20px;
+            flex-wrap: wrap;
+        }
+        .hero-content {
+            display: flex;
+            width: 100%;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .hero-text {
+            flex: 1;
+            max-width: 600px;
+            text-align: left;
+            padding: 20px;
+            order: 1;
+        }
+        .hero-text h1 {
+            font-size: 3rem;
+            color: #ffa500;
+            text-shadow: 2px 2px 10px rgba(255, 165, 0, 0.8);
+            margin-bottom: 20px;
+        }
+        .hero-text p {
+            font-size: 1.5rem;
+            margin-bottom: 30px;
+        }
+        .profile-img-container {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            order: 2;
+        }
+        .profile-img {
+            max-width: 400px;
+            max-height: 400px;
+            width: 100%;
+            height: auto;
+            border-radius: 50%;
+            border: 5px solid #ffa500;
+            box-shadow: 0 0 20px #00d4ff;
+            transition: transform 0.3s;
+        }
+        .profile-img:hover {
+            transform: scale(1.05);
+        }
+        .btn-custom {
+            background-color: #ffa500;
+            color: black;
+            font-weight: bold;
+            transition: 0.3s;
+            margin: 5px;
+            padding: 12px 24px;
+            font-size: 1.2rem;
+            border: none;
+            border-radius: 5px;
+        }
+        .btn-custom:hover {
+            background-color: #ff8500;
+            transform: scale(1.05);
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 992px) {
+            .hero-content {
+                flex-direction: column;
+            }
+            .hero-text {
+                order: 2;
+                text-align: center;
+                max-width: 100%;
+                padding: 20px 0;
+            }
+            .profile-img-container {
+                order: 1;
+                margin-bottom: 30px;
+            }
+            .profile-img {
+                max-width: 250px;
+                max-height: 250px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero-text h1 {
+                font-size: 2.2rem;
+            }
+            .hero-text p {
+                font-size: 1.2rem;
+            }
+            .profile-img {
+                max-width: 200px;
+                max-height: 200px;
+            }
+        }
+
+        /* Sections styling */
+        .section {
+            padding: 80px 20px;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            color: #ffa500;
+            margin-bottom: 40px;
+            text-align: center;
+        }
+
+        /* Skills Section */
+        .skills-section {
+            background-color: #1a1a1a;
+        }
+
+        .skills-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        /* Projects Section */
+        .projects-section {
+            background-color: #1e1e1e;
+        }
+
+        .projects-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+            gap: 40px;
+        }
+
+        .skill, .project {
+            background-color: #333;
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 0 15px rgba(255, 165, 0, 0.3);
+            transition: transform 0.3s;
+        }
+
+        .project {
+            min-height: 300px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .project:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(255, 165, 0, 0.4);
+        }
+
+        .skill h3, .project h3 {
+            color: #ffa500;
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+        }
+
+        .project p {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        /* Skill Images */
+        .skill img {
+            width: 80px;
+            height: 80px;
+            margin-bottom: 15px;
+        }
+
+        /* Contact Section */
+        .contact-section {
+            background-color: #1a1a1a;
+        }
+
+        .contact-links {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .contact-links a {
+            color: #00d4ff;
+            font-size: 1.5rem;
+            transition: 0.3s;
+            text-decoration: none;
+            padding: 15px 30px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            width: fit-content;
+        }
+
+        .contact-links a:hover {
+            color: #ff8500;
+            background-color: rgba(0, 212, 255, 0.1);
+            transform: scale(1.05);
+        }
+
+        .contact-links i {
+            margin-right: 15px;
+            font-size: 1.8rem;
+        }
+
+        /* Project technologies */
+        .project-tech {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 15px;
+        }
+        .tech-tag {
+            background-color: #ffa500;
+            color: #121212;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: bold;
+        }
+
+        /* Scrollbar styling */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #1e1e1e;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #ffa500;
+            border-radius: 5px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #ff8500;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-brand" href="#">Jagadeesh Reddymasu</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#skills">Skills</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <section id="about" class="hero-section section">
+        <div class="container hero-content">
+            <div class="hero-text">
+                <h1>Welcome!</h1>
+                <h1>I'm </h1>
+                <h1> Jagadeesh Reddymasu</h1>
+                <p>Python Fullstack Developer</p>
+                <a href="JagadeeshReddymasu.pdf" download class="btn btn-custom">Download Resume</a>
+            </div>
+            <div class="profile-img-container">
+                <img src="jagadeesh.png" alt="Profile Picture" class="profile-img">
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="skills-section section">
+        <div class="container">
+            <h2 class="section-title">My Skills</h2>
+            <div class="skills-list">
+                <div class="skill">
+                    <img src="python" alt="Python Logo">
+                    <h3>Python</h3>
+                    <p>Experienced in Python for web development, data analysis, and machine learning.</p>
+                </div>
+                <div class="skill">
+                    <img src="MySQL" alt="MySQL Logo">
+                    <h3>MySQL</h3>
+                    <p>Strong knowledge of database design and management using MySQL.</p>
+                </div>
+                <div class="skill">
+                    <img src="html1" alt="HTML Logo">
+                    <h3>HTML</h3>
+                    <p>Skilled in creating web pages using HTML and HTML5 standards.</p>
+                </div>
+                <div class="skill">
+                    <img src="css" alt="CSS Logo">
+                    <h3>CSS</h3>
+                    <p>Expertise in styling and responsive design using CSS.</p>
+                </div>
+                <div class="skill">
+                    <img src="javascript" alt="JavaScript Logo">
+                    <h3>JavaScript</h3>
+                    <p>Proficient in JavaScript for dynamic and interactive web applications.</p>
+                </div>
+                <div class="skill">
+                    <img src="django1.jpg" alt="Django Logo">
+                    <h3>Django</h3>
+                    <p>Experienced in using Django for building robust web applications.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="projects-section section">
+        <div class="container">
+            <h2 class="section-title">My Projects</h2>
+            <div class="projects-list">
+                <div class="project">
+                    <h3>QR Based Metro Ticket Booking Web Application</h3>
+                    <p>A comprehensive ticket booking system that generates QR codes for metro tickets, allowing passengers to easily access and validate their tickets using mobile devices.</p>
+                    <div class="project-tech">
+                        <span class="tech-tag">Django</span>
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">MySQL</span>
+                        <span class="tech-tag">HTML/CSS</span>
+                        <span class="tech-tag">JavaScript</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact-section section">
+        <div class="container">
+            <h2 class="section-title">Contact Me</h2>
+            <div class="contact-links">
+                <a href="https://mail.google.com/mail/u/0/?tab=rm&ogbl#inbox?compose=jrjtXFBVcLxsBrMTTHwMLrvmDsjNXXSmPSBHhDxxCxkPMPTsJkWWGFWmWgFXccBbVshhMSGg">
+                    <i class="fas fa-envelope"></i> jagadeeshreddymasu@gmail.com
+                </a>
+                <a href="https://www.linkedin.com/in/jagadeeshreddymasu" target="_blank">
+                    <i class="fab fa-linkedin"></i> LinkedIn Profile
+                </a>
+                
+                <a href="https://github.com/jagadeeshreddymasu" target="_blank">
+                    <i class="fab fa-github"></i> GitHub Profile
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Smooth scrolling for navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Ensure mailto link works
+        document.querySelector('a[href^="mailto:"]').addEventListener('click', function(e) {
+            // Let the default mailto behavior work
+            window.location.href = "mailto:jagadeeshreddymasu@gmail.com";
+        });
+    </script>
+</body>
+</html>
